@@ -1,0 +1,108 @@
+#paneSettingMain{
+	-fx-background-color: transparent;
+}
+#paneSettingTop{
+	
+}
+#iKonSettings{
+	-fx-icon-color:#FAFAFA;
+}
+#lbSettings{
+	-fx-text-fill: #FAFAFA;
+}
+#stackpaneCenter{
+	-fx-background-color: transparent;
+	
+}
+
+.toggle-button{
+	-fx-background-color: transparent;
+	-fx-text-fill: #FAFAFA;
+}
+.toggle-button:hover{
+	-fx-background-color: rgba(117, 117, 117,0.6);
+	-fx-background-radius: 5px;
+	-fx-text-fill: #FAFAFA;
+}
+.toggle-button:selected{
+	-fx-background-color: rgba(147,179,242,0.8);
+	-fx-background-radius: 5px;
+	-fx-border-radius: 5px;
+	-fx-text-fill: #000000;
+}
+.toggle-button:selected #iKonGeneral,.toggle-button:selected #iKonAppearance,.toggle-button:selected #iKonConnect
+,.toggle-button:selected #iKonDatabase{
+	-fx-icon-color:#000000
+}
+#iKonGeneral, #iKonAppearance, #iKonConnect, #iKonDatabase{
+	-fx-icon-color:#FAFAFA;
+}
+
+.scroll-pane {
+    -fx-background-color: #161c2a;
+    -fx-background-radius: 5px;
+    -fx-border-color: #1b2336;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5px;
+}
+.scroll-pane .label {
+    -fx-text-fill: #F9FAFB;
+}
+.scroll-pane .viewport {
+    -fx-background-color: #161c2a;
+}
+.scroll-pane .scroll-bar{
+	-fx-background-color: #081425;
+}
+.scroll-pane .thumb{
+	-fx-background-color: #336699;
+}
+.choice-box{
+	-fx-background-color:rgba(31,38,53,0.8);
+	-fx-border-color: #336699;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5px;
+}
+.check-box{
+	-fx-text-fill: #FAFAFA;
+	
+}
+.check-box .box{
+	-fx-background-color: rgba(31,38,53,0.8);
+	-fx-border-color: #336699;
+}
+.text-input{
+	-fx-background-color: rgba(31,38,53,0.8);
+	-fx-background-radius: 5px;
+	-fx-border-color: #336699;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5px;
+	-fx-text-fill: #FAFAFA;
+}
+.button{
+	-fx-background-color: rgba(3, 105, 161,0.8);
+	-fx-border-width: 1px;
+	-fx-border-radius: 5px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #FAFAFA;
+}
+#btnLoadFile{
+	-fx-background-color: transparent;
+}
+#iKonOpenFolder{
+	-fx-icon-color:#FAFAFA;
+}
+/* #paneGridGen:row {
+  -fx-border-color: #000000;
+  -fx-border-width: 2px;
+  -fx-border-style: dashed;
+  -fx-border-radius: 5px;
+}*/
+
+#choiceBoxPageStart .context-menu, #choiceboxDataType .context-menu,
+ #choiceboxLanguage .context-menu, #choiceboxTheme .context-menu{
+	-fx-min-width: 150px;
+}
+#txtPath{
+	-fx-text-fill: #FAFAFA;
+}

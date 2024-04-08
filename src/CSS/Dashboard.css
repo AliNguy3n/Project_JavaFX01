@@ -1,0 +1,81 @@
+.root{
+	-fx-background-color: #336699;
+	
+}
+
+#anchorMain{
+	
+}
+#panelTop{
+    -fx-background-color: #061121;
+    -fx-border-color: #1E293B;
+    -fx-border-width: 1px 0px 0px 0px;
+}
+#panelNavLeft{
+    -fx-background-color:linear-gradient(to bottom,#061121,#030912);
+}
+#panelNavLeftSub{
+     -fx-background-color:linear-gradient(to bottom,#061121,#030912);
+}
+#paneUserStage{
+	
+}
+#ImageAvatar{
+	
+}
+#lbUsername{
+	
+}
+#btnHome, #btnManager, #btnAnalyze, #btnAccounts, #btnApps, #btnSettings, #btnList, #btnHelp{
+    -fx-background-color: transparent;    
+    -fx-text-fill: #939191;
+}
+#btnHome:hover, #btnManager:hover, #btnAnalyze:hover, #btnAccounts:hover, #btnApps:hover, #btnSettings:hover, #btnList:hover, #btnHelp:hover{
+    -fx-background-color: transparent;    
+    -fx-text-fill: #F2F2F2;
+}
+ #imageList, #imageHome, #imageManager,#imageAnalyze, #imageAccounts, #imageApps,
+#imageSettings, #imageHelp{
+	-fx-icon-color: #939191;
+} 
+
+#imageList:hover, #imageHome:hover, #imageManager:hover,#imageAnalyze:hover, #imageAccounts:hover, #imageApps:hover,
+#imageSettings:hover, #imageHelp:hover{
+	-fx-icon-color:  #f0f0f0;
+	
+} 
+#imageTools{
+	-fx-icon-color:#79CBCA;
+}
+
+
+#menuGroupFile, #menuGroupEdit, #menuGroupView, #menuGroupModify, #menuGroupTools, 
+#menuGroupWin, #menuGroupHelp{
+	
+}
+
+#panelCenter{
+	-fx-background-color: #081425; /* Màu nền của panelCenter */
+}
+.menu-bar{
+    -fx-background-color: #061121; /* Màu nền của MenuBar */
+
+}
+.menu .label{
+	-fx-text-fill: E0E0E0;	/* Màu Chữ của MenuBar */
+}
+.menu-item{
+	 				/* Màu nền của MenuItem */
+}
+.menu:showing{
+	-fx-background-color: #3B82F6;
+}
+.context-menu{
+	/*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
+	-fx-background-color: #374151;
+    -fx-background-insets: 0, 1, 2;
+    -fx-border-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+    -fx-padding: 0 0 0 0;
+}
+
+

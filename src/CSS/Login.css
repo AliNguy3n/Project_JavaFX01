@@ -1,0 +1,32 @@
+
+.mainlogin{
+	-fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+#txtPass{
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #1388cbe8;
+}
+#txtName{
+    -fx-background-color: transparent;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #1388cb;
+}
+#btnSignIn{
+    -fx-background-color: linear-gradient(to right, #36D1DC 0%, #5B86E5 51%, #36D1DC 100%);
+    -fx-background-radius: 15px;
+    
+}
+#btnExit{
+    -fx-background-color: transparent;
+}
+#panelBlur{
+	
+}
+#panelLeft{
+	
+}
+#panelRight{
+	
+}

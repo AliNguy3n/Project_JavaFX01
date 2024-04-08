@@ -1,0 +1,65 @@
+
+#panelAccountsMain{
+	-fx-background-color: transparent;
+}
+#grInfo{
+	-fx-background-color: rgba(255, 255, 255, 1.0);
+	/*-fx-background-color:white;*/
+	-fx-background-radius: 5px;
+	
+}
+#hBoxChart{
+	-fx-background-color:white;
+	-fx-background-radius: 5px;
+}
+#tbAccounts{
+	-fx-border-radius: 5px;
+	-fx-border-color: #d0d0d0;
+	-fx-background-radius: 5px;
+	
+}
+.dialogAlert{
+	
+}
+.label{
+	-fx-text-fill: #5e5e5e;
+}
+.button{
+	-fx-background-color: transparent;
+}
+.button:hover{
+	-fx-background-color: rgba(186, 230, 253, 1.0);
+	
+}
+#imageRefresh{
+	-fx-icon-color:linear-gradient(to bottom,#22C55E,#059669);
+}
+#imageAddUser{
+	-fx-icon-color:linear-gradient(to bottom,#3B82F6,#0EA5E9);
+}
+#iKonSearch{
+	-fx-icon-color:linear-gradient(to bottom,#6B7280,#262626);
+}
+#iKonClear{
+	
+}
+#lnChart{
+	/*-fx-background-color: blue;*/
+}
+.chart {
+	-fx-font-size: 12px;
+	-fx-legend-visible: false;
+	
+}
+.chart-series-line{
+	-fx-stroke-width: 3px;
+	
+}
+.default-color0.chart-series-line{
+	-fx-stroke: #5e5e5e;
+	-fx-stroke-line-cap: round;
+	-fx-legend-visible: false ;
+}
+.chart-plot-background {
+	-fx-background-color: transparent;
+}

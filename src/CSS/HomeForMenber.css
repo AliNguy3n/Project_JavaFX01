@@ -1,0 +1,34 @@
+#paneMemberMain{
+	
+}
+#paneMemberTop{
+	-fx-background-color: #F0F0F0;
+	-fx-background-radius: 5px;
+}
+#paneMemberLeft{
+	-fx-background-color: #F0F0F0;
+	-fx-background-radius: 5px;
+}
+#paneMemberCenter{
+	-fx-background-color: #F0F0F0;
+	-fx-background-radius: 5px;
+}
+#paneMemberRight{
+	-fx-background-color: #F0F0F0;
+	-fx-background-radius: 5px;
+}
+#choiceDate, choiceStatus{
+	
+}
+#datePicker{
+	
+}
+#txtSearch{
+	
+}
+#btnSearch{
+	
+}
+#iKonSearch{
+	
+}

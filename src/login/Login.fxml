@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane id="AnchorPane" fx:id="mainlogin" prefHeight="400.0" prefWidth="600.0" styleClass="mainlogin" stylesheets="@../CSS/Login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
+   <children>
+      <AnchorPane fx:id="panelBlur" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="131.0" fitWidth="200.0" focusTraversable="true" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Picture1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="133.0" fitWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <image>
+                  <Image url="@../assets/Picture2.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <BoxBlur height="3.0" width="3.0" />
+         </effect>
+      </AnchorPane>
+      <AnchorPane fx:id="panelLeft" layoutX="28.0" layoutY="29.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="327.0" fitWidth="475.0" layoutX="-57.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../17.Images%20Library/5.Công%20Nghệ/IT-GIF.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelRight" layoutX="288.0" prefHeight="400.0" prefWidth="312.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="288.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+         <TextField fx:id="txtName" layoutX="110.0" layoutY="109.0" prefHeight="32.0" promptText="Username" stylesheets="@../CSS/Login.css" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
+               
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               </TextField>
+            <PasswordField fx:id="txtPass" layoutX="110.0" layoutY="157.0" prefHeight="32.0" promptText="Password" styleClass="txtPass" stylesheets="@../CSS/Login.css" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
+               <font>
+                  <Font size="14.0" />
+               </font></PasswordField>
+            <Button fx:id="btnSignIn" defaultButton="true" layoutX="66.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleActionEvent" prefHeight="30.0" prefWidth="180.0" text="Sign in" textFill="WHITE" AnchorPane.topAnchor="207.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <VBox alignment="TOP_RIGHT" prefHeight="109.0" prefWidth="400.0" stylesheets="@../CSS/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="btnExit" mnemonicParsing="false" onAction="#handleActionEvent" stylesheets="@../CSS/Login.css">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <graphic>
+                        <FontIcon iconColor="#1388cb" iconLiteral="fltfal-dismiss-12" iconSize="20" />
+                     </graphic>
+                  </Button>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="400.0" text="Login" textFill="#2889bee8">
+                     <font>
+                        <Font name="Roboto Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            
+            <FontIcon iconColor="#1388cb" iconLiteral="fltfal-key-20" iconSize="25" layoutX="34.0" layoutY="186.0" AnchorPane.leftAnchor="32.0" />
+            <FontIcon iconColor="#1388cb" iconLiteral="fltfmz-person-available-24" iconSize="25" layoutX="34.0" layoutY="137.0" AnchorPane.leftAnchor="34.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

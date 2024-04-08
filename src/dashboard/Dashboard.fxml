@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="anchorMain" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+   <children>
+      <MenuBar fx:id="menuBarMain" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="menuGroupFile" mnemonicParsing="false" styleClass="custom-menu" text="File">
+            <items>
+              <MenuItem fx:id="menuNew" mnemonicParsing="false" onAction="#handleMenuAction" text="New+">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuOpen" mnemonicParsing="false" onAction="#handleMenuAction" text="Open">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#handleMenuAction" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuSaveAs" mnemonicParsing="false" onAction="#handleMenuAction" text="Save As...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <Menu mnemonicParsing="false" styleClass="custom-menu" text="Import...">
+                    <items>
+                      <MenuItem fx:id="menuImport1" mnemonicParsing="false" onAction="#handleMenuAction" text="Format File 1" />
+                        <MenuItem fx:id="menuImport2" mnemonicParsing="false" onAction="#handleMenuAction" text="Format File 2" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="menuClose" mnemonicParsing="false" onAction="#handleMenuAction" text="Close" />
+            </items>
+          </Menu>
+          <Menu fx:id="menuGroupEdit" mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="menuRedo" mnemonicParsing="false" onAction="#handleMenuAction" text="Redo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Y" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuUndo" mnemonicParsing="false" onAction="#handleMenuAction" text="Undo">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Z" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuCopy" mnemonicParsing="false" onAction="#handleMenuAction" text="Copy">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuCut" mnemonicParsing="false" onAction="#handleMenuAction" text="Cut">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="X" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuPaste" mnemonicParsing="false" onAction="#handleMenuAction" text="Paste">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="V" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuDuplicate" mnemonicParsing="false" onAction="#handleMenuAction" text="Duplicate">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuDelelte" mnemonicParsing="false" onAction="#handleMenuAction" text="Delete">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DELETE" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+            <Menu fx:id="menuGroupView" mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="menuPrivew1" mnemonicParsing="false" onAction="#handleMenuAction" text="Privew 1" />
+                  <MenuItem fx:id="menuModify2" mnemonicParsing="false" onAction="#handleMenuAction" text="Privew 2" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuGroupModify" mnemonicParsing="false" text="Modify">
+               <items>
+                  <MenuItem fx:id="menuModify1" mnemonicParsing="false" text="Action Modify 1" />
+                  <MenuItem fx:id="menuModify2" mnemonicParsing="false" text="Action Modify 2" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuGroupTools" mnemonicParsing="false" text="Tools">
+               <items>
+                  <MenuItem fx:id="menuTool1" mnemonicParsing="false" onAction="#handleMenuAction" text="Action 1" />
+                  <MenuItem fx:id="menuTool2" mnemonicParsing="false" text="Action 2" />
+                  <MenuItem fx:id="menuTool3" mnemonicParsing="false" text="Action 3" />
+                  <MenuItem fx:id="menuRef" mnemonicParsing="false" onAction="#handleMenuAction" text="References" />
+                  <MenuItem fx:id="menuOption" mnemonicParsing="false" onAction="#handleMenuAction" text="Option" />
+               </items>
+            </Menu>
+            <Menu fx:id="menuGroupWin" mnemonicParsing="false" text="Window">
+               <items>
+                  <MenuItem fx:id="menuWin1" mnemonicParsing="false" onAction="#handleMenuAction" text="Window action 1" />
+                  <MenuItem fx:id="menuWin2" mnemonicParsing="false" onAction="#handleMenuAction" text="Window action 2" />
+               </items>
+            </Menu>
+          <Menu fx:id="menuGroupHelp" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="menuHelp" mnemonicParsing="false" onAction="#handleMenuAction" text="View help">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="F1" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuTips" mnemonicParsing="false" onAction="#handleMenuAction" text="Tips and Tricks" />
+                  <MenuItem fx:id="menuCheckUpdate" mnemonicParsing="false" onAction="#handleMenuAction" text="Check for Update" />
+                  <MenuItem fx:id="menuPrivary" mnemonicParsing="false" onAction="#handleMenuAction" text="Privary" />
+                  <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#handleMenuAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="panelTop" layoutY="25.0" prefHeight="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <FontIcon fx:id="imageList" iconLiteral="fltfmz-navigation-unread-24" iconSize="28" layoutX="6.0" layoutY="34.0" onMouseClicked="#handleNavAction" />
+            <HBox fx:id="paneUserStage" alignment="CENTER_LEFT" layoutX="41.0" layoutY="3.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="41.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="ImageAvatar" fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="lbUsername" alignment="BASELINE_CENTER" prefHeight="51.0" text="Username" textFill="#747474">
+                     <font>
+                        <Font name="Roboto Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelNavLeft" layoutY="65.0" prefHeight="200.0" prefWidth="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <FontIcon fx:id="imageHome" iconLiteral="fltfal-home-32" iconSize="30" layoutX="5.0" layoutY="33.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageManager" iconLiteral="fltfal-folder-28" iconSize="30" layoutX="5.0" layoutY="69.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageAnalyze" iconLiteral="fltfal-data-pie-24" iconSize="30" layoutX="5.0" layoutY="106.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageAccounts" iconLiteral="fltfmz-people-16" iconSize="30" layoutX="5.0" layoutY="142.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageApps" iconLiteral="fltfal-apps-24" iconSize="30" layoutX="5.0" layoutY="176.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageSettings" iconLiteral="fltfmz-settings-28" iconSize="30" layoutX="5.0" layoutY="209.0" onMouseClicked="#handleNavAction" />
+            <FontIcon fx:id="imageTools" iconLiteral="fltfal-cube-16" iconSize="30" layoutX="5.0" layoutY="511.0" onMouseClicked="#handleNavAction" AnchorPane.bottomAnchor="30.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="panelNavLeftSub" layoutX="40.0" layoutY="65.0" prefHeight="200.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <Button fx:id="btnHome" alignment="BASELINE_LEFT" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" prefWidth="140.0" text="Home" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnManager" alignment="BASELINE_LEFT" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" prefWidth="140.0" text="Manager" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAnalyze" alignment="BASELINE_LEFT" layoutY="70.0" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" prefWidth="140.0" text="Analyze" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAccounts" alignment="BASELINE_LEFT" layoutY="105.0" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" text="Accounts" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnApps" alignment="BASELINE_LEFT" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" text="Apps" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" layoutY="175.0" mnemonicParsing="false" onMouseClicked="#handleNavAction" prefHeight="35.0" prefWidth="150.0" text="Settings" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Roboto Bold" size="16.0" />
+               </font>
+            </Button>
+            <Label fx:id="lbVersion" layoutX="14.0" layoutY="624.0" text="Alil 's Software Ver 1.0" textFill="#928f8f" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
+               <font>
+                  <Font name="Roboto" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <BorderPane fx:id="panelCenter" layoutX="190.0" layoutY="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
+         <center>
+            <ProgressIndicator fx:id="progressIcon" prefHeight="74.0" prefWidth="49.0" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
+   </children>
+</AnchorPane>
