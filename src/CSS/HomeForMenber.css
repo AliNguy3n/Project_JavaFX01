@@ -2,24 +2,54 @@
 	
 }
 #paneMemberTop{
-	-fx-background-color: #F0F0F0;
+	-fx-background-color: #FFFFFF;
 	-fx-background-radius: 5px;
 }
 #paneMemberLeft{
-	-fx-background-color: #F0F0F0;
+	-fx-background-color: transparent;
 	-fx-background-radius: 5px;
 }
 #paneMemberCenter{
-	-fx-background-color: #F0F0F0;
+	-fx-background-color: Transparent;
 	-fx-background-radius: 5px;
 }
 #paneMemberRight{
-	-fx-background-color: #F0F0F0;
+	-fx-background-color: transparent;
 	-fx-background-radius: 5px;
 }
-#choiceDate, choiceStatus{
+
+#scrollTaskFailed, #scrollTaskDoing, #scrollTaskPanel{
+	-fx-background-color: transparent;
+}
+#scrollTaskFailed .viewport, #scrollTaskDoing .viewport , #scrollTaskPanel .viewport{
+	-fx-background-color: transparent;
+}
+#scrollTaskDoing{
 	
 }
+
+#scrollTaskPanel{
+	
+}
+#paneSplitTask *.split-pane-divider {
+	-fx-border-color: #A3A3A3;
+	-fx-border-width: 0.5px;
+    -fx-padding: 0 0 0 0;
+    -fx-fill: transparent;
+}
+#paneSplitTask{
+	-fx-border-radius: 5px;
+	-fx-background-color: transparent;
+}
+
+#vBoxTaskFailed, #gridPaneTaskDoing,#vBoxTaskPlane{
+	-fx-background-color: transparent;
+	-fx-background-radius: 5px;
+}
+#choiceDate .list-view .list-cell{
+	-fx-background-color: #00ff00;
+	}
+
 #datePicker{
 	
 }
@@ -32,3 +62,10 @@
 #iKonSearch{
 	
 }
+#lbTaskFailded, #lbTaskDoing,#lbTaskPlan ,#vboxDelayTime, #vboxPlanTime{
+	-fx-background-color: #FFFFFF;
+	-fx-text-fill: #404040;
+	-fx-background-radius:5px;
+	 
+}
+

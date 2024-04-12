@@ -27,7 +27,7 @@ public class LoginController implements Initializable{
 	public static ItemAcc uslg;
 	Connection cnn;
     String user ="sa";
-    String password="123";
+    String password="1234";
     String database= "MyApps";
     
     PreparedStatement st;

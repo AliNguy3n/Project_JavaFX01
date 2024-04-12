@@ -5,7 +5,7 @@ module FX_MyProject {
 	requires java.sql;
 	requires org.kordamp.ikonli.javafx;
 	requires javafx.base;
-	
+	requires org.controlsfx.controls;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens login to javafx.fxml;

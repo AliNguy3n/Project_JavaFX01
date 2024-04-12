@@ -1,6 +1,5 @@
 .root{
 	-fx-background-color: #336699;
-	
 }
 
 #anchorMain{
@@ -62,7 +61,7 @@
 
 }
 .menu .label{
-	-fx-text-fill: E0E0E0;	/* Màu Chữ của MenuBar */
+	-fx-text-fill: #E0E0E0;	/* Màu Chữ của MenuBar */
 }
 .menu-item{
 	 				/* Màu nền của MenuItem */
@@ -70,8 +69,7 @@
 .menu:showing{
 	-fx-background-color: #3B82F6;
 }
-.context-menu{
-	/*-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";*/
+#menuBarMain .context-menu{
 	-fx-background-color: #374151;
     -fx-background-insets: 0, 1, 2;
     -fx-border-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;

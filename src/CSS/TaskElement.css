@@ -1,0 +1,40 @@
+#taskElement {
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 5px;
+	-fx-border-radius: 5px;
+	-fx-border-width: 2px;
+}
+#iKonCompete{
+	-fx-fill: #7dd7a8;
+}
+
+    
+#iKonContent{
+	-fx-fill:#F97316;
+}
+    
+
+#iKonDelay{
+	-fx-fill: #db5cb1;
+}
+#iKonDoing{
+	-fx-fill: #56bcdb;
+}
+#iKonTime{
+	-fx-fill: #6261b3;
+}
+#iKonToGo{
+    -fx-fill:#3B82F6;
+}
+
+#lbTaskContent{
+	
+}
+
+#lbTaskStartEnd{
+	
+}
+#lbTaskTitle{
+	
+}
+

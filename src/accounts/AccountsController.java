@@ -47,7 +47,7 @@ import javafx.scene.control.TableColumn;
 public class AccountsController implements Initializable {
 	protected Connection cnn;
     protected String user ="sa";
-    protected String password="123";
+    protected String password="1234";
     protected String database= "MyApps";
     protected String tablename ="user";
     PreparedStatement st;
