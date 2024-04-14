@@ -48,9 +48,9 @@ public class TaskElementController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 	}
-	String styleDelay =" ";
-	String styleDoing ="-fx-background-color:#ECFEFF;";
-	String styleCompele ="";
+	String styleDelay ="-fx-background-color:#FFF7ED;";
+	String styleDoing ="-fx-background-color:#F0F9FF;";
+	String styleCompele ="-fx-background-color:#F0FDF4;";
     public void setTask(Task task) {
     	setColor(task.getStatus());
     	lbTaskTitle.setText(task.getTitle());

@@ -181,6 +181,10 @@ public class SettingsMainController implements Initializable{
 
     @FXML
     private TextField txtUsername;
+    @FXML
+    private Label lbPort;
+    @FXML
+    private TextField txtPort;
  // Set du lieu cho cac Choice box:
     //	1.Thang General:
     	String[] choiceLanguage = {"English","Vietnamese"};
@@ -246,6 +250,7 @@ public class SettingsMainController implements Initializable{
 		
 		choiceboxDataType.getItems().addAll(choiceDatabaseType);
     	choiceboxDataType.setValue(obSettings.getValue("databaseType"));
+    	txtPort.setText(obSettings.getValue("port"));
     	txtServername.setText(obSettings.getValue("serverName"));
     	txtUsername.setText(obSettings.getValue("usernameServer"));
     	txtPassword.setText(obSettings.getValue("passwordServer"));
@@ -298,6 +303,7 @@ public class SettingsMainController implements Initializable{
 			obSettings.setValue("usernameServer", txtUsername.getText());
 			obSettings.setValue("passwordServer", txtPassword.getText());
 			obSettings.setValue("databaseName", txtDatabasename.getText());
+			obSettings.setValue("port", txtPort.getText());
 			if(stio.SettingsWriter(obSettings)) {
 				Alert alertIO = new Alert(AlertType.INFORMATION);
 				alertIO.setTitle("Congratulation!");

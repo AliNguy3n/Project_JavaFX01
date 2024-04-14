@@ -82,7 +82,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
          <children>
-            <SplitPane fx:id="paneSplitTask" dividerPositions="0.20843520782396088, 0.8306845965770171" layoutX="47.0" layoutY="48.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane fx:id="paneSplitTask" dividerPositions="0.25, 0.75" layoutX="47.0" layoutY="48.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane fx:id="paneTaskFailed" minHeight="0.0" minWidth="200.0">
                      <children>
