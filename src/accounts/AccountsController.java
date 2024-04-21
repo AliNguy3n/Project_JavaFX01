@@ -23,6 +23,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import login.DBConnect;
+import login.LoginController;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -46,10 +47,12 @@ import javafx.scene.control.TableColumn;
 
 public class AccountsController implements Initializable {
 	protected Connection cnn;
-    protected String user ="sa";
-    protected String password="1234";
-    protected String database= "MyApps";
+    protected String user ;
+    protected String password;
+    protected String database;
+    protected String port;
     protected String tablename ="user";
+    protected String serverName;
     PreparedStatement st;
     ResultSet rs;
     ItemAcc ite = null;
@@ -106,7 +109,7 @@ public class AccountsController implements Initializable {
     @FXML
     void handleBtnAction(ActionEvent event) throws SQLException {
     	if(event.getSource() == btnAddUser) {
-    		addOrMod(DashboardController.uslg,DashboardController.uslg.permission,false);
+    		addOrMod(LoginController.uslg,LoginController.uslg.permission,false);
     		
     	}else if(event.getSource() ==btnSearch) {
     		String keyword = txtSearch.getText();
@@ -128,13 +131,19 @@ public class AccountsController implements Initializable {
     	}
     	
     }
-	
+	public AccountsController(){
+		user = LoginController.obSt.getValue("usernameServer");
+		password =LoginController.obSt.getValue("passwordServer");
+		database = LoginController.obSt.getValue("databaseName");
+		port = LoginController.obSt.getValue("port");
+		serverName = LoginController.obSt.getValue("serverName");
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		lbUser.setText(DashboardController.uslg.getUsername());
-		lbPermission.setText("Lever "+DashboardController.uslg.getPermission());
-		lbStatus.setText(DashboardController.uslg.getStatus());
-		cnn = DBConnect.makeConnection(user, password, database);
+		lbUser.setText(LoginController.uslg.getUsername());
+		lbPermission.setText("Lever "+LoginController.uslg.getPermission());
+		lbStatus.setText(LoginController.uslg.getStatus());
+		cnn = DBConnect.makeConnection(serverName, port, database, user,password);
 		try {
 			long startTime = System.currentTimeMillis();
 			loadTableAcc();
@@ -149,12 +158,12 @@ public class AccountsController implements Initializable {
 	private void loadTableAcc() throws SQLException {
 		
 		
-		if(DashboardController.uslg.getPermission()==1) {			
+		if(LoginController.uslg.getPermission()==1) {			
 			table = selectUser(1);	
 			System.out.println("Load complete");
-		}else if(DashboardController.uslg.getPermission()==2) {
+		}else if(LoginController.uslg.getPermission()==2) {
 			table = selectUser(2);
-		}else if(DashboardController.uslg.getPermission()==3) {
+		}else if(LoginController.uslg.getPermission()==3) {
 			
 		}else {
 			System.out.println("Permission not valid");
@@ -195,7 +204,7 @@ public class AccountsController implements Initializable {
                         edit.setOnMouseClicked((MouseEvent ev)->{
                         	ite = tbAccounts.getSelectionModel().getSelectedItem();
                         	try {
-								addOrMod(ite,DashboardController.uslg.permission,true);
+								addOrMod(ite,LoginController.uslg.permission,true);
 							} catch (SQLException e) {
 								e.printStackTrace();
 							}

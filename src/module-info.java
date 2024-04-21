@@ -6,6 +6,8 @@ module FX_MyProject {
 	requires org.kordamp.ikonli.javafx;
 	requires javafx.base;
 	requires org.controlsfx.controls;
+	requires com.calendarfx.view;
+
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens login to javafx.fxml;

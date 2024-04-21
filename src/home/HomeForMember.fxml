@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.calendarfx.view.AgendaView?>
+<?import com.calendarfx.view.WeekDayHeaderView?>
+<?import com.calendarfx.view.WeekTimeScaleView?>
+<?import com.calendarfx.view.WeekView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -7,6 +11,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -14,6 +19,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.CheckComboBox?>
@@ -69,94 +75,282 @@
             </GridPane>
          </children>
          <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="3.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
       </AnchorPane>
    </top>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <center>
-      <AnchorPane fx:id="paneMemberCenter" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <SplitPane fx:id="paneSplitTask" dividerPositions="0.25, 0.75" layoutX="47.0" layoutY="48.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <items>
-                <AnchorPane fx:id="paneTaskFailed" minHeight="0.0" minWidth="200.0">
-                     <children>
-                        <Label fx:id="lbTaskFailded" alignment="CENTER" contentDisplay="CENTER" layoutY="27.0" prefHeight="30.0" prefWidth="0.0" text="Delay" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font name="Roboto Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane fx:id="scrollTaskFailed" fitToWidth="true" layoutX="6.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                           <content>
-                              <VBox fx:id="vBoxTaskFailed" alignment="CENTER" spacing="5.0">
+            <AnchorPane fx:id="paneMemberBasic">
+               <children>
+                  <SplitPane fx:id="paneSplitTask" dividerPositions="0.25, 0.75" layoutX="47.0" layoutY="48.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane fx:id="paneTaskFailed" minHeight="0.0" minWidth="200.0">
+                           <children>
+                              <Label fx:id="lbTaskFailded" alignment="CENTER" contentDisplay="CENTER" layoutY="27.0" prefHeight="30.0" prefWidth="0.0" text="Delay" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Roboto Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane fx:id="scrollTaskFailed" fitToWidth="true" layoutX="6.0" layoutY="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <content>
+                                    <VBox fx:id="vBoxTaskFailed" alignment="CENTER" spacing="5.0">
+                                       <padding>
+                                          <Insets right="3.0" />
+                                       </padding>
+                                    </VBox>
+                                 </content>
                                  <padding>
-                                    <Insets right="3.0" />
-                                 </padding></VBox>
-                           </content>
+                                    <Insets right="3.0" top="3.0" />
+                                 </padding>
+                              </ScrollPane>
+                           </children>
                            <padding>
-                              <Insets right="3.0" top="3.0" />
-                           </padding></ScrollPane>
-                     </children>
-                     <padding>
-                        <Insets right="3.0" />
-                     </padding>
-                  </AnchorPane>
-                <AnchorPane fx:id="paneTaskDoing" minWidth="400.0">
-                     <children>
-                        <Label fx:id="lbTaskDoing" layoutX="-16.0" layoutY="26.0" prefHeight="30.0" text="Doing" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font name="Roboto Bold" size="14.0" />
-                           </font>
-                           <padding>
-                              <Insets left="5.0" />
-                           </padding></Label>
-                        <ScrollPane fx:id="scrollTaskDoing" fitToWidth="true" layoutX="14.0" layoutY="47.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                           <padding>
-                              <Insets right="3.0" top="3.0" />
+                              <Insets right="3.0" />
                            </padding>
-                           <content>
-                              <GridPane fx:id="gridPaneTaskDoing">
+                        </AnchorPane>
+                      <AnchorPane fx:id="paneTaskDoing" minWidth="400.0">
+                           <children>
+                              <Label fx:id="lbTaskDoing" layoutX="-16.0" layoutY="26.0" prefHeight="30.0" text="Doing" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Roboto Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </Label>
+                              <ScrollPane fx:id="scrollTaskDoing" fitToWidth="true" layoutX="14.0" layoutY="47.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <padding>
+                                    <Insets right="3.0" top="3.0" />
+                                 </padding>
+                                 <content>
+                                    <GridPane fx:id="gridPaneTaskDoing">
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                              <GridPane fx:id="gridDoingTime" alignment="TOP_RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <rowConstraints>
-                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                               </GridPane>
-                           </content></ScrollPane>
-                        <GridPane fx:id="gridDoingTime" alignment="TOP_RIGHT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                        </GridPane>
-                     </children>
-                     <padding>
-                        <Insets left="3.0" right="3.0" />
-                     </padding>
-                  </AnchorPane>
-                  <AnchorPane fx:id="paneTaskPlan" layoutX="10.0" layoutY="10.0" minWidth="200.0">
-                     <children>
-                        <Label fx:id="lbTaskPlan" alignment="CENTER" layoutX="24.0" layoutY="26.0" prefHeight="30.0" text="Plan" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font name="Roboto Bold" size="14.0" />
-                           </font></Label>
-                        <ScrollPane fx:id="scrollTaskPanel" fitToHeight="true" fitToWidth="true" layoutX="12.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                           </children>
                            <padding>
-                              <Insets top="3.0" />
+                              <Insets left="3.0" right="3.0" />
                            </padding>
-                           <content>
-                              <VBox fx:id="vBoxTaskPlan" />
-                           </content></ScrollPane>
+                        </AnchorPane>
+                        <AnchorPane fx:id="paneTaskPlan" layoutX="10.0" layoutY="10.0" minWidth="200.0">
+                           <children>
+                              <Label fx:id="lbTaskPlan" alignment="CENTER" layoutX="24.0" layoutY="26.0" prefHeight="30.0" text="Plan" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Roboto Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane fx:id="scrollTaskPanel" fitToHeight="true" fitToWidth="true" layoutX="12.0" layoutY="139.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <padding>
+                                    <Insets top="3.0" />
+                                 </padding>
+                                 <content>
+                                    <VBox fx:id="vBoxTaskPlan" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <padding>
+                              <Insets left="3.0" />
+                           </padding>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <BorderPane fx:id="paneMemberCalendar" prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <WeekDayHeaderView fx:id="weekDayHeaderView" minHeight="30.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets left="50.0" />
+                     </BorderPane.margin>
+                  </WeekDayHeaderView>
+               </top>
+               <center>
+                  <ScrollPane fx:id="scrollMemberCalendar" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <left>
+                              <WeekTimeScaleView fx:id="weekTimeScaleView" earlyLateHoursStrategy="HIDE" prefWidth="50.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <center>
+                              <WeekView fx:id="weekView" earlyLateHoursStrategy="HIDE" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+            <BorderPane fx:id="paneDetailTask" prefHeight="200.0" prefWidth="200.0">
+               <top>
+                  <HBox fx:id="hboxTopDetailTask" prefHeight="44.0" prefWidth="804.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleActionPaneTask">
+                           <graphic>
+                              <FontIcon fx:id="iKonBack" iconLiteral="fltral-arrow-right-circle-24" iconSize="24" rotate="180.0" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnApplyTask" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleActionPaneTask">
+                           <graphic>
+                              <FontIcon fx:id="iKonApplyTask" iconLiteral="fltfmz-send-24" iconSize="24" />
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
-                     <padding>
-                        <Insets left="3.0" right="3.0" />
-                     </padding>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
+                     <BorderPane.margin>
+                        <Insets bottom="3.0" top="3.0" />
+                     </BorderPane.margin>
+                  </HBox>
+               </top>
+               <center>
+                  <ScrollPane fx:id="scrollDetailTask" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                     <content>
+                        <BorderPane fx:id="paneTitleTask" prefHeight="200.0" prefWidth="200.0">
+                           <top>
+                              <GridPane fx:id="gridTitleTask" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                    <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="255.0" minWidth="10.0" prefWidth="20.0" />
+                                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="623.0" minWidth="10.0" prefWidth="70.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="623.0" minWidth="10.0" prefWidth="290.0" />
+                                    <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="64.0" />
+                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="623.0" minWidth="10.0" prefWidth="329.0" />
+                                  <ColumnConstraints hgrow="NEVER" maxWidth="228.5" minWidth="10.0" prefWidth="20.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+                                  <RowConstraints minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Start Task: " GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="Roboto Bold" size="12.0" />
+                                       </font></Label>
+                                    <Label text="End Task:" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="Roboto Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Contents:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="Roboto Bold" size="12.0" />
+                                       </font></Label>
+                                    <Label text="From:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="Roboto Bold" size="12.0" />
+                                       </font></Label>
+                                    <Label text="To:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                       <GridPane.margin>
+                                          <Insets left="5.0" />
+                                       </GridPane.margin>
+                                       <font>
+                                          <Font name="Roboto Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtTitleTask" prefHeight="25.0" prefWidth="350.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></TextField>
+                                    <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                    <TextField GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                    <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin></TextArea>
+                                    <Button fx:id="btnEditTask" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" GridPane.columnIndex="4">
+                                       <graphic>
+                                          <FontIcon fx:id="iKonEditTask" iconLiteral="fltfmz-text-edit-style-20" iconSize="24" />
+                                       </graphic>
+                                    </Button>
+                                    <FontIcon fx:id="iKonTaskTitle" iconLiteral="fltrmz-reciept-20" iconSize="36" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                                    <TextField fx:id="txtSubTitleTask" prefHeight="18.0" prefWidth="350.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" top="5.0" />
+                                 </padding>
+                              </GridPane>
+                           </top>
+                           <center>
+                              <GridPane fx:id="gridContentsTask" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <BorderPane.margin>
+                                    <Insets bottom="3.0" top="3.0" />
+                                 </BorderPane.margin>
+                              </GridPane>
+                           </center>
+                           <padding>
+                              <Insets bottom="3.0" top="3.0" />
+                           </padding>
+                        </BorderPane>
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </center>
+   <right>
+      <AgendaView fx:id="agendaView" prefHeight="520.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="3.0" />
+         </BorderPane.margin></AgendaView>
+   </right>
 </BorderPane>

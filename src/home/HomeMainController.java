@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import login.LoginController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,7 +47,7 @@ public class HomeMainController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		lbDate.setText(LocalDate.now().toString());
-		switch(DashboardController.uslg.getPermission()) {
+		switch(LoginController.uslg.getPermission()) {
 		case 1 -> loadHomepage("/home/HomeForMember.fxml");
 		case 2 -> loadHomepage("/home/HomeForMember.fxml");
 		case 3 -> loadHomepage("/home/HomeForMember.fxml");

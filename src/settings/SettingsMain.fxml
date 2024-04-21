@@ -195,15 +195,15 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="296.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="46.5" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                        <RowConstraints fillHeight="false" maxHeight="45.0" minHeight="10.0" prefHeight="36.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="52.5" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -241,7 +241,10 @@
                               <Font name="Roboto Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtServername" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtServername" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets bottom="1.0" top="1.0" />
+                           </GridPane.margin></TextField>
                         <TextField fx:id="txtUsername" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="txtDatabasename" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <PasswordField fx:id="txtPassword" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
@@ -276,7 +279,10 @@
                               <Font name="Roboto Bold" size="12.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtPort" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txtPort" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets bottom="1.0" top="1.0" />
+                           </GridPane.margin></TextField>
                      </children>
                   </GridPane>
                </content>

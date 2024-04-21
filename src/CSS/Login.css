@@ -30,3 +30,12 @@
 #panelRight{
 	
 }
+#checkboxRememberMe{
+	-fx-text-fill: #1388cbe8;
+}
+#checkboxRememberMe .box{
+	-fx-background-color: #FAFAFA;
+	-fx-border-color: #1388cbe8;
+	-fx-border-width: 2px;
+	-fx-border-radius: 2px;
+}

@@ -24,6 +24,7 @@ public class ObSetting {
 //	usernameServer;
 //	passwordServer;
 //	databaseName;
+//  port;
 	public Map<String, String> settings = new HashMap<String, String>();
 	
 	public void setValue(String key,String value) {

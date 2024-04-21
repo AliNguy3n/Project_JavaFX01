@@ -255,6 +255,7 @@ public class SettingsMainController implements Initializable{
     	txtUsername.setText(obSettings.getValue("usernameServer"));
     	txtPassword.setText(obSettings.getValue("passwordServer"));
     	txtDatabasename.setText(obSettings.getValue("databaseName"));
+    	
     	displayStack("General");
 	}
 

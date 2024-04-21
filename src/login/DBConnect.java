@@ -4,14 +4,18 @@ package login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import settings.ObSetting;
+import settings.SettingsIO;
 /**
  *
  * @author Duc Linh
  */
 public class DBConnect {
     static Connection cnn;
-    public static Connection makeConnection(String user, String password, String database){
-      String dbUrl ="jdbc:sqlserver://LAPTOP-NAL17MNF:1433;databaseName="+database+";user="+user+";password="+password+";encrypt=true;trustServerCertificate=true";
+
+    public static Connection makeConnection(String serverName, String port, String database, String user, String password){
+      String dbUrl ="jdbc:sqlserver://"+serverName+":"+port+";databaseName="+database+";user="+user+";password="+password+";encrypt=true;trustServerCertificate=true";
         try{
             cnn = DriverManager.getConnection(dbUrl);
            
@@ -20,4 +24,5 @@ public class DBConnect {
         }
         return cnn;
     }
+
 }

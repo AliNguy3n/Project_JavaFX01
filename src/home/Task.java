@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 * @author Duc Linh
 */
 public class Task {
-	int id;
+	private String id;
 	private String title;
 	private String content;
 	private String status;
@@ -14,10 +14,10 @@ public class Task {
 	private LocalDateTime start;
 	private LocalDateTime finish;
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {

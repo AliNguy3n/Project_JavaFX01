@@ -17,19 +17,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import settings.ObSetting;
+import settings.SettingsIO;
 
 public class LoginController implements Initializable{
 	public static ItemAcc uslg;
+	public static ObSetting obSt;
 	Connection cnn;
-    String user ="sa";
-    String password="1234";
-    String database= "MyApps";
-    
+	protected String serverName;
+	protected String user;
+	protected String password;
+	protected String database;
+	protected String port;
     PreparedStatement st;
     ResultSet rs;
     @FXML
@@ -48,13 +53,16 @@ public class LoginController implements Initializable{
     private AnchorPane panelRight;
     @FXML
     private AnchorPane panelBlur;
+    @FXML
+    private CheckBox checkboxRememberMe;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cnn = DBConnect.makeConnection(user, password, database);
         txtName.requestFocus();
+        txtName.setText("admin");
+        txtPass.setText("123");
     }    
 
     @FXML
@@ -62,10 +70,25 @@ public class LoginController implements Initializable{
         if(event.getSource() == btnSignIn){
             login();
         }
-        
+      
         if(event.getSource()== btnExit){
             System.exit(0);
         }
+    }
+    public LoginController() {
+    	try {
+    		obSt = new ObSetting();
+        	SettingsIO sti = new SettingsIO();
+        	obSt = sti.SettingsReader();
+    		user = obSt.getValue("usernameServer");
+    		password =obSt.getValue("passwordServer");
+    		database = obSt.getValue("databaseName");
+    		serverName = obSt.getValue("serverName");
+    		port = obSt.getValue("port");
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+        cnn = DBConnect.makeConnection(serverName, port, database ,user, password);
     }
     private void login(){
         String name = txtName.getText().trim();
@@ -98,9 +121,7 @@ public class LoginController implements Initializable{
     
     private void loadDashboard() throws IOException{
         btnSignIn.getScene().getWindow().hide();
-        System.out.println("Before Dashboard");
         Parent root = FXMLLoader.load(getClass().getResource("/dashboard/Dashboard.fxml"));
-        System.out.println("After Dashboard");
         Stage stage = new Stage();
         stage.setTitle("Dashboard!");
         Image icon64 = new Image(getClass().getResourceAsStream("/assets/logo64_64.png"));

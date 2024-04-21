@@ -50,7 +50,7 @@ public class TaskElementController implements Initializable{
 	}
 	String styleDelay ="-fx-background-color:#FFF7ED;";
 	String styleDoing ="-fx-background-color:#F0F9FF;";
-	String styleCompele ="-fx-background-color:#F0FDF4;";
+	String stylePlan ="-fx-background-color:#F0FDF4;";
     public void setTask(Task task) {
     	setColor(task.getStatus());
     	lbTaskTitle.setText(task.getTitle());
@@ -58,14 +58,14 @@ public class TaskElementController implements Initializable{
     	lbTaskStartEnd.setText(task.getStart().toString() +" - "+ task.getFinish().toString());
     	
     	iKonDoing.setVisible(task.getStatus().equals("Doing"));
-    	iKonCompete.setVisible(task.getStatus().equals("Complete"));
+    	iKonCompete.setVisible(task.getStatus().equals("Plan"));
     	iKonDelay.setVisible(task.getStatus().equals("Delay"));
     	
     }
     private void setColor(String st) {
     	switch(st) {
     	case "Doing" -> taskElement.setStyle(styleDoing);
-    	case "Complete" ->taskElement.setStyle(styleCompele);
+    	case "Plan" ->taskElement.setStyle(stylePlan);
     	case "Delay" -> taskElement.setStyle(styleDelay);
     	}
     }

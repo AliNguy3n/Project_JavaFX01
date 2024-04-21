@@ -210,8 +210,8 @@ public class DashboardController  implements Initializable  {
     	}
     }
     // Khai bao cac bien instance
-//	public static ItemAcc uslg =  LoginController.uslg;
-	public static ItemAcc uslg =  new ItemAcc("admin","123",1,"Active","Lever 1",0);
+	protected ItemAcc uslg =  LoginController.uslg;
+	//public static ItemAcc uslg =  new ItemAcc("admin","123",1,"Active","Lever 1",0);
     boolean listState=true;
     Pane center =null;
     SettingsIO stio = new SettingsIO();
@@ -224,7 +224,7 @@ public class DashboardController  implements Initializable  {
     		hanldeList(!listState);
     		controllPanelCenter(!listState);
     		listState=!listState;
-    		System.out.println(listState);
+
     	}
     	if(event.getSource() ==btnHome || event.getSource()== imageHome) {
     		loadPage("/home/HomeMain.fxml");
