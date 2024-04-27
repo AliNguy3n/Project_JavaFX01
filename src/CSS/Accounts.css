@@ -32,13 +32,13 @@
 	
 }
 #imageRefresh{
-	-fx-icon-color:linear-gradient(to bottom,#22C55E,#059669);
+	-fx-fill:linear-gradient(to bottom,#22C55E,#059669);
 }
 #imageAddUser{
-	-fx-icon-color:linear-gradient(to bottom,#3B82F6,#0EA5E9);
+	-fx-fill:linear-gradient(to bottom,#3B82F6,#0EA5E9);
 }
 #iKonSearch{
-	-fx-icon-color:linear-gradient(to bottom,#6B7280,#262626);
+	-fx-fill:linear-gradient(to bottom,#6B7280,#262626);
 }
 #iKonClear{
 	

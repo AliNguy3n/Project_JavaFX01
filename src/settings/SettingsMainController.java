@@ -5,11 +5,10 @@ package settings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -25,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import test.ReMakeTask;
 
 import java.io.File;
 import java.net.URL;
@@ -213,6 +213,8 @@ public class SettingsMainController implements Initializable{
     		saveSettings();
     	}else if(event.getSource() ==btnCancelSetting) {
     		cancelSaving();
+    	}else if(event.getSource() ==btnTestConnect) {
+    		Remake();
     	}
     	
     }
@@ -236,6 +238,20 @@ public class SettingsMainController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+    	if(obSettings==null) {
+    		obSettings.setValue("language", "English");
+    		obSettings.setValue("guiTheme", "Dark Theme");
+    		obSettings.setValue("pageStartup","Settings");
+    		obSettings.setValue("notification", "true");
+    		obSettings.setValue("saveDataToLocal", "false");
+    		obSettings.setValue("pathfolder", null);
+    		obSettings.setValue("databaseType", null);
+    		obSettings.setValue("port", null);
+    		obSettings.setValue("serverName", null);
+    		obSettings.setValue("usernameServer", null);
+    		obSettings.setValue("passwordServer", null);
+    		obSettings.setValue("databaseName", null);
+    	}
     	choiceboxLanguage.getItems().addAll(choiceLanguage);
     	choiceboxLanguage.setValue(obSettings.getValue("language"));
     	choiceboxTheme.getItems().addAll(choiceGui);
@@ -258,18 +274,15 @@ public class SettingsMainController implements Initializable{
     	
     	displayStack("General");
 	}
-
-    
-    
     	
     // Ham bat tat cac Stackpane
-    void displayStack(String pane) {
+    private void displayStack(String pane) {
     	paneGeneral.setVisible(pane.equals("General"));
 		paneAppearance.setVisible(pane.equals("Appearance"));
 		paneDatabase.setVisible(pane.equals("Database"));
 		panelConnect.setVisible(pane.equals("Connect"));
     }
-    void loadFile() {
+    private void loadFile() {
     	System.out.println("Alo load file");
     	Stage fileStage = new Stage();
     	
@@ -282,7 +295,7 @@ public class SettingsMainController implements Initializable{
     	}
     }
     
-	void saveSettings() throws Exception {
+	private void saveSettings() throws Exception {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Save your change ?");
 		alert.setContentText("Would you like to confirm that all the above changes will be saved");
@@ -320,7 +333,7 @@ public class SettingsMainController implements Initializable{
 		}
 		
 	}
-	void cancelSaving() {
+	private void cancelSaving() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Not Save your change ?");
 		alert.setContentText("Cancel your action!");
@@ -332,5 +345,36 @@ public class SettingsMainController implements Initializable{
 		if(result.isPresent() && result.get().equals(buttonTypeYes)) {
 			initialize(null, null);
 		}
+	}
+	private void Remake() {
+		Stage newStage = new Stage();
+		BorderPane root = new BorderPane();
+		Button btnCreate = new Button();
+		Button btnClear = new Button();
+		Button btnExection = new Button();
+		ReMakeTask remaketask = new ReMakeTask();
+		TextField txtEnterName = new TextField();
+		root.setPrefWidth(220);
+		root.setPrefHeight(50);
+		
+		btnCreate.setText("Add Task");
+		btnClear.setText("Clear All");
+		btnExection.setText("Add Execution");
+		btnCreate.setOnAction(e->{
+    		remaketask.insertAllTask();
+		});
+		btnExection.setOnAction(e->{
+			remaketask.insertExecution(txtEnterName.getText());
+		});
+		btnClear.setOnAction(e->{
+			remaketask.deleteAllTask();
+		});
+		root.setTop(txtEnterName);
+		root.setCenter(btnCreate);
+		root.setRight(btnExection);
+		root.setLeft(btnClear);
+		newStage.setScene(new Scene(root));
+		newStage.showAndWait();
+		
 	}
 }

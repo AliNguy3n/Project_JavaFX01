@@ -253,12 +253,12 @@
                               <Font name="Roboto" size="12.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnTestConnect" mnemonicParsing="false" onAction="#handleActionSetting" prefHeight="28.0" prefWidth="130.0" text="Apply Information" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <Button fx:id="btnTestConnect" mnemonicParsing="false" onAction="#handleActionSetting" prefHeight="28.0" prefWidth="130.0" text="Remake" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <font>
                               <Font name="Roboto" size="12.0" />
                            </font>
                         </Button>
-                        <Label fx:id="lbConnect" text="Connect to database" GridPane.rowIndex="7">
+                        <Label fx:id="lbConnect" text="ReMake Task" GridPane.rowIndex="7">
                            <font>
                               <Font name="Roboto Bold" size="12.0" />
                            </font>

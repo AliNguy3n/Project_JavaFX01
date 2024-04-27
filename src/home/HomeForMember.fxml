@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.calendarfx.view.AgendaView?>
+<?import com.calendarfx.view.TimeField?>
 <?import com.calendarfx.view.WeekDayHeaderView?>
 <?import com.calendarfx.view.WeekTimeScaleView?>
 <?import com.calendarfx.view.WeekView?>
+<?import io.github.palexdev.materialfx.controls.MFXToggleButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -196,31 +201,6 @@
                </center>
             </BorderPane>
             <BorderPane fx:id="paneDetailTask" prefHeight="200.0" prefWidth="200.0">
-               <top>
-                  <HBox fx:id="hboxTopDetailTask" prefHeight="44.0" prefWidth="804.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleActionPaneTask">
-                           <graphic>
-                              <FontIcon fx:id="iKonBack" iconLiteral="fltral-arrow-right-circle-24" iconSize="24" rotate="180.0" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="10.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="btnApplyTask" layoutX="20.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleActionPaneTask">
-                           <graphic>
-                              <FontIcon fx:id="iKonApplyTask" iconLiteral="fltfmz-send-24" iconSize="24" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                     <BorderPane.margin>
-                        <Insets bottom="3.0" top="3.0" />
-                     </BorderPane.margin>
-                  </HBox>
-               </top>
                <center>
                   <ScrollPane fx:id="scrollDetailTask" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
@@ -231,26 +211,30 @@
                            <top>
                               <GridPane fx:id="gridTitleTask" BorderPane.alignment="CENTER">
                                 <columnConstraints>
-                                    <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="255.0" minWidth="10.0" prefWidth="20.0" />
-                                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="623.0" minWidth="10.0" prefWidth="70.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="623.0" minWidth="10.0" prefWidth="290.0" />
-                                    <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="64.0" minWidth="10.0" prefWidth="64.0" />
-                                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="623.0" minWidth="10.0" prefWidth="329.0" />
-                                  <ColumnConstraints hgrow="NEVER" maxWidth="228.5" minWidth="10.0" prefWidth="20.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" />
+                                  <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="54.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="65.0" minWidth="10.0" />
+                                    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
+                                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
-                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="5.0" prefHeight="5.0" vgrow="NEVER" />
                                     <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
                                     <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
-                                  <RowConstraints minHeight="10.0" prefHeight="36.0" vgrow="NEVER" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="80.0" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
-                                    <Label text="Start Task: " GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Label text="Start: " GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <font>
                                           <Font name="Roboto Bold" size="12.0" />
                                        </font></Label>
-                                    <Label text="End Task:" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                    <Label text="End:" GridPane.columnIndex="5" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -266,7 +250,7 @@
                                        <font>
                                           <Font name="Roboto Bold" size="12.0" />
                                        </font></Label>
-                                    <Label text="To:" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                    <Label text="To:" GridPane.columnIndex="5" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets left="5.0" />
                                        </GridPane.margin>
@@ -274,29 +258,47 @@
                                           <Font name="Roboto Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txtTitleTask" prefHeight="25.0" prefWidth="350.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                                    <TextField fx:id="txtTitleTask" focusTraversable="false" prefHeight="25.0" GridPane.columnIndex="2" GridPane.columnSpan="7">
                                        <font>
-                                          <Font size="16.0" />
+                                          <Font name="System Bold" size="16.0" />
                                        </font></TextField>
-                                    <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                    <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="4">
+                                    <TextArea fx:id="txtContents" wrapText="true" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="4">
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin></TextArea>
-                                    <Button fx:id="btnEditTask" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" GridPane.columnIndex="4">
+                                    <Button fx:id="btnEditTask" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleActionPaneTask" GridPane.columnIndex="9">
                                        <graphic>
                                           <FontIcon fx:id="iKonEditTask" iconLiteral="fltfmz-text-edit-style-20" iconSize="24" />
                                        </graphic>
                                     </Button>
-                                    <FontIcon fx:id="iKonTaskTitle" iconLiteral="fltrmz-reciept-20" iconSize="36" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
-                                    <TextField fx:id="txtSubTitleTask" prefHeight="18.0" prefWidth="350.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                    <FontIcon fx:id="iKonTaskTitle" iconLiteral="fltfmz-tasks-app-20" iconSize="32" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                                    <TextField fx:id="txtSubTitleTask" prefHeight="18.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="10.0" />
                                        </font>
                                     </TextField>
+                                    <DatePicker fx:id="pickDateStart" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <TimeField fx:id="pickTimeStart" prefHeight="23.0" prefWidth="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                    <DatePicker fx:id="pickDateEnd" prefHeight="25.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                                    <TimeField fx:id="pickTimeEnd" prefWidth="50.0" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtTaskFrom" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></TextField>
+                                    <TextField fx:id="txtTaskTo" GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font></TextField>
+                                    <Button fx:id="btnBack" mnemonicParsing="false" onAction="#handleActionPaneTask">
+                                       <graphic>
+                                          <FontIcon fx:id="iKonBack" iconLiteral="fltral-arrow-right-circle-24" iconSize="24" rotate="180.0" />
+                                       </graphic>
+                                    </Button>
+                                    <FontIcon fx:id="iKonDesc" iconLiteral="fltfmz-text-description-20" iconSize="20" GridPane.rowIndex="4" />
+                                    <FontIcon fx:id="iKonStartTask" iconLiteral="fltral-calendar-clock-20" iconSize="20" GridPane.rowIndex="3" />
+                                    <FontIcon fx:id="iKonEndTask" iconLiteral="fltral-calendar-clock-20" iconSize="20" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                    <FontIcon fx:id="iKonTaskFrom" iconLiteral="fltral-calendar-arrow-right-20" iconSize="20" GridPane.rowIndex="2" />
+                                    <FontIcon fx:id="iKonTaskTo" iconLiteral="fltral-calendar-reply-20" iconSize="20" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                                  </children>
                                  <BorderPane.margin>
                                     <Insets />
@@ -309,31 +311,122 @@
                            <center>
                               <GridPane fx:id="gridContentsTask" BorderPane.alignment="CENTER">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="40.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="45.0" minWidth="10.0" prefWidth="30.0" />
                                 </columnConstraints>
                                 <rowConstraints>
-                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="40.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="32.0" vgrow="NEVER" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="26.0" vgrow="NEVER" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <BorderPane.margin>
                                     <Insets bottom="3.0" top="3.0" />
                                  </BorderPane.margin>
+                                 <children>
+                                    <Label fx:id="lbActivities" text="Your Activities:" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <FontIcon fx:id="iKonActivities" iconLiteral="fas-running" iconSize="20" GridPane.halignment="RIGHT">
+                                       <GridPane.margin>
+                                          <Insets right="5.0" />
+                                       </GridPane.margin></FontIcon>
+                                    <Separator prefHeight="0.0" GridPane.columnSpan="12" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                    <Button fx:id="btnApplyTask" mnemonicParsing="false" onAction="#handleActionPaneTask" GridPane.columnIndex="11">
+                                       <graphic>
+                                          <FontIcon fx:id="iKonApplyTask" iconLiteral="fltfmz-send-24" iconSize="24" />
+                                       </graphic>
+                                    </Button>
+                                    <Accordion fx:id="accordionActivities" GridPane.columnSpan="12" GridPane.rowIndex="1" GridPane.rowSpan="7" GridPane.valignment="TOP">
+                                      <panes>
+                                        <TitledPane text="Accepting task assignment">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0">
+                                                   <children>
+                                                      <HBox layoutX="63.0" layoutY="17.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                         <children>
+                                                            <Label prefHeight="32.0" text="Click Button to Accepting Task:  ">
+                                                               <font>
+                                                                  <Font name="System Bold" size="14.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <MFXToggleButton fx:id="btnAcceptTask" graphicTextGap="8.0" length="32.0" onMouseClicked="#handleActionYourActivities" prefHeight="37.0" prefWidth="66.0" radius="8.0" text="Toggle" textFill="TRANSPARENT" />
+                                                         </children>
+                                                      </HBox>
+                                                      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+                                                         <children>
+                                                            <Label fx:id="lbStatusAccepting" text="lbStatusAccepting" />
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                          </content>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                        </TitledPane>
+                                        <TitledPane text="Requesting necessary resources (if any)">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <content>
+                                                <VBox prefHeight="200.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label text="Your Request:">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <TextArea fx:id="txtRequesting" prefHeight="150.0" wrapText="true" />
+                                                      <Button fx:id="btnSendReques" alignment="TOP_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="Send" textFill="#070707" VBox.vgrow="SOMETIMES">
+                                                         <graphic>
+                                                            <FontIcon iconColor="#0a6dbc" iconLiteral="fltfmz-send-24" iconSize="12" />
+                                                         </graphic>
+                                                         <VBox.margin>
+                                                            <Insets bottom="3.0" top="3.0" />
+                                                         </VBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </VBox>
+                                             </content>
+                                        </TitledPane>
+                                        <TitledPane text="Encountered obstacles/issues.">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          </content>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                        </TitledPane>
+                                          <TitledPane layoutX="10.0" layoutY="60.0" text="Task reporting">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                             </content>
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                 </children>
                               </GridPane>
                            </center>
                            <padding>

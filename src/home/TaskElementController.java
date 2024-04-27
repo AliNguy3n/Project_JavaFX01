@@ -52,14 +52,14 @@ public class TaskElementController implements Initializable{
 	String styleDoing ="-fx-background-color:#F0F9FF;";
 	String stylePlan ="-fx-background-color:#F0FDF4;";
     public void setTask(Task task) {
-    	setColor(task.getStatus());
+    	setColor(task.getTaskstatus());
     	lbTaskTitle.setText(task.getTitle());
     	lbTaskContent.setText(task.getContent());
     	lbTaskStartEnd.setText(task.getStart().toString() +" - "+ task.getFinish().toString());
     	
-    	iKonDoing.setVisible(task.getStatus().equals("Doing"));
-    	iKonCompete.setVisible(task.getStatus().equals("Plan"));
-    	iKonDelay.setVisible(task.getStatus().equals("Delay"));
+    	iKonDoing.setVisible(task.getTaskstatus().equals("Doing"));
+    	iKonCompete.setVisible(task.getTaskstatus().equals("Plan"));
+    	iKonDelay.setVisible(task.getTaskstatus().equals("Delay"));
     	
     }
     private void setColor(String st) {

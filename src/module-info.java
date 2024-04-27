@@ -7,6 +7,7 @@ module FX_MyProject {
 	requires javafx.base;
 	requires org.controlsfx.controls;
 	requires com.calendarfx.view;
+	requires MaterialFX;
 
 	
 	opens application to javafx.graphics, javafx.fxml;

@@ -5,7 +5,7 @@
 	
 }
 #iKonSettings{
-	-fx-icon-color:#FAFAFA;
+	-fx-fill:#FAFAFA;
 }
 #lbSettings{
 	-fx-text-fill: #FAFAFA;
@@ -32,10 +32,10 @@
 }
 .toggle-button:selected #iKonGeneral,.toggle-button:selected #iKonAppearance,.toggle-button:selected #iKonConnect
 ,.toggle-button:selected #iKonDatabase{
-	-fx-icon-color:#000000
+	-fx-text-fill:#000000
 }
 #iKonGeneral, #iKonAppearance, #iKonConnect, #iKonDatabase{
-	-fx-icon-color:#FAFAFA;
+	-fx-fill:#FAFAFA;
 }
 
 .scroll-pane {
@@ -98,7 +98,7 @@
 	-fx-background-color: transparent;
 }
 #iKonOpenFolder{
-	-fx-icon-color:#FAFAFA;
+	-fx-fill:#FAFAFA;
 }
 /* #paneGridGen:row {
   -fx-border-color: #000000;

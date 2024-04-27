@@ -5,8 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import settings.ObSetting;
-import settings.SettingsIO;
+
 /**
  *
  * @author Duc Linh

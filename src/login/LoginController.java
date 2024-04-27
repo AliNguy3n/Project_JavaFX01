@@ -80,11 +80,15 @@ public class LoginController implements Initializable{
     		obSt = new ObSetting();
         	SettingsIO sti = new SettingsIO();
         	obSt = sti.SettingsReader();
-    		user = obSt.getValue("usernameServer");
-    		password =obSt.getValue("passwordServer");
-    		database = obSt.getValue("databaseName");
-    		serverName = obSt.getValue("serverName");
-    		port = obSt.getValue("port");
+    		if(obSt!=null) {
+    			user = obSt.getValue("usernameServer");
+        		password =obSt.getValue("passwordServer");
+        		database = obSt.getValue("databaseName");
+        		serverName = obSt.getValue("serverName");
+        		port = obSt.getValue("port");
+    		}else {
+    			loadDashboard();
+    		}
     	} catch (Exception e) {
     		e.printStackTrace();
     	}

@@ -37,7 +37,7 @@
          <children>
             <ImageView fitHeight="327.0" fitWidth="475.0" layoutX="-57.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../17.Images%20Library/5.Công%20Nghệ/IT-GIF.gif" />
+                  <Image url="@../assets/IT-GIF.gif" />
                </image>
             </ImageView>
          </children>

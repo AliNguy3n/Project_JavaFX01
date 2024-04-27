@@ -1,7 +1,7 @@
 package home;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.ObservableList;
 
 /**
@@ -14,16 +14,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -40,26 +38,25 @@ import login.DBConnect;
 import login.LoginController;
 
 import com.calendarfx.model.Calendar;
+import com.calendarfx.model.Calendar.Style;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
-import com.calendarfx.model.Interval;
 import com.calendarfx.view.AgendaView;
-import com.calendarfx.view.CalendarView;
 import com.calendarfx.view.DateControl;
 import com.calendarfx.view.DateControl.EntryEditParameter;
+import com.calendarfx.view.TimeField;
 import com.calendarfx.view.WeekDayHeaderView;
 import com.calendarfx.view.WeekTimeScaleView;
 import com.calendarfx.view.WeekView;
+
+import io.github.palexdev.materialfx.controls.MFXToggleButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Time;
-import java.time.DayOfWeek;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -71,15 +68,32 @@ import org.controlsfx.control.CheckComboBox;
 import org.kordamp.ikonli.javafx.FontIcon;
 
 public class HomeForMemberController implements Initializable {
+    @FXML
+    private Accordion accordionActivities;
 
     @FXML
     private AgendaView agendaView;
 
     @FXML
+    private MFXToggleButton btnAcceptTask;
+
+    @FXML
     private Button btnApply;
 
     @FXML
+    private Button btnApplyTask;
+
+    @FXML
+    private Button btnBack;
+
+    @FXML
+    private Button btnEditTask;
+
+    @FXML
     private Button btnSearch;
+
+    @FXML
+    private Button btnSendReques;
 
     @FXML
     private CheckComboBox<String> checkDisplayMode;
@@ -94,13 +108,55 @@ public class HomeForMemberController implements Initializable {
     private DatePicker datePicker;
 
     @FXML
+    private GridPane gridContentsTask;
+
+    @FXML
     private GridPane gridDoingTime;
 
     @FXML
     private GridPane gridPaneTaskDoing;
 
     @FXML
+    private GridPane gridTitleTask;
+
+    @FXML
+    private FontIcon iKonActivities;
+
+    @FXML
+    private FontIcon iKonApplyTask;
+
+    @FXML
+    private FontIcon iKonBack;
+
+    @FXML
+    private FontIcon iKonDesc;
+
+    @FXML
+    private FontIcon iKonEditTask;
+
+    @FXML
+    private FontIcon iKonEndTask;
+
+    @FXML
     private FontIcon iKonSearch;
+
+    @FXML
+    private FontIcon iKonStartTask;
+
+    @FXML
+    private FontIcon iKonTaskFrom;
+
+    @FXML
+    private FontIcon iKonTaskTitle;
+
+    @FXML
+    private FontIcon iKonTaskTo;
+
+    @FXML
+    private Label lbActivities;
+
+    @FXML
+    private Label lbStatusAccepting;
 
     @FXML
     private Label lbTaskDoing;
@@ -112,10 +168,13 @@ public class HomeForMemberController implements Initializable {
     private Label lbTaskPlan;
 
     @FXML
-    private BorderPane paneMemberCalendar;
+    private BorderPane paneDetailTask;
 
     @FXML
     private AnchorPane paneMemberBasic;
+
+    @FXML
+    private BorderPane paneMemberCalendar;
 
     @FXML
     private BorderPane paneMemberMain;
@@ -136,6 +195,27 @@ public class HomeForMemberController implements Initializable {
     private AnchorPane paneTaskPlan;
 
     @FXML
+    private BorderPane paneTitleTask;
+
+    @FXML
+    private DatePicker pickDateEnd;
+
+    @FXML
+    private DatePicker pickDateStart;
+
+    @FXML
+    private TimeField pickTimeEnd;
+
+    @FXML
+    private TimeField pickTimeStart;
+
+    @FXML
+    private ScrollPane scrollDetailTask;
+
+    @FXML
+    private ScrollPane scrollMemberCalendar;
+
+    @FXML
     private ScrollPane scrollTaskDoing;
 
     @FXML
@@ -145,7 +225,25 @@ public class HomeForMemberController implements Initializable {
     private ScrollPane scrollTaskPanel;
 
     @FXML
+    private TextArea txtContents;
+
+    @FXML
+    private TextArea txtRequesting;
+
+    @FXML
     private TextField txtSearch;
+
+    @FXML
+    private TextField txtSubTitleTask;
+
+    @FXML
+    private TextField txtTaskFrom;
+
+    @FXML
+    private TextField txtTaskTo;
+
+    @FXML
+    private TextField txtTitleTask;
 
     @FXML
     private VBox vBoxTaskFailed;
@@ -161,24 +259,7 @@ public class HomeForMemberController implements Initializable {
 
     @FXML
     private WeekView weekView;
-    
-    @FXML
-    private ScrollPane scrollMemberCalendar;
-    
-    @FXML
-    private BorderPane paneDetailTask;
-    
-    @FXML
-    private Button btnBack;
-    
-    @FXML
-    private FontIcon iKonBack;
-    
-    @FXML
-    private Button btnApplyTask;
-    
-    @FXML
-    private FontIcon iKonApplyTask;
+
 	@FXML
 	void handleTaskSearch(ActionEvent event) {
 
@@ -191,7 +272,18 @@ public class HomeForMemberController implements Initializable {
     		getChoiceSelected(null);
     		btnApply.setDisable(false);
     	}
+    	if(event.getSource()== btnEditTask) {
+    		txtTitleTask.setEditable(true);
+    	}
     }
+    @FXML
+    void handleActionYourActivities(MouseEvent event) {
+    	if(event.getSource()==btnAcceptTask) {
+    		acceptingTaskAssignment();
+    	}
+    }
+
+    
     Pane item = null;
 	ObservableList<Task> taskFailed = FXCollections.observableArrayList();
 	ObservableList<Task> taskDoing = FXCollections.observableArrayList();
@@ -200,22 +292,27 @@ public class HomeForMemberController implements Initializable {
 
 	Map<String, Integer> mapDate = new HashMap<String, Integer>();
 	String[] date = { "Week", "5 Days", "3 Days", "2 Days", "Today" };
-	String[] status = { "Basic", "Calendar", "Gantt chart" };
+	String[] status = { "Basic", "Calendar", "List" };
 	int selectedDate=2;
 	String selectedStatus;
 	Homeboot homeboot;
 
 	ObservableList<String> selectedModeDisplay;
-	
-	Calendar calendar = new Calendar("Test");
+
 	CalendarSource calendarSource = new CalendarSource("source");
 	Connection cnn;
 	PreparedStatement st;
 	ResultSet rs;
 	
 	LocalDateTime currentDateTime = LocalDateTime.now();
+	LocalDate currentDate = LocalDate.now();
+	public HomeForMemberController(){
+		
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println(currentDateTime);
 		loadTaskBar();
 		try {
 			loadTaskData();
@@ -223,8 +320,6 @@ public class HomeForMemberController implements Initializable {
 			e.printStackTrace();
 		}
 		getChoiceSelected(null);
-		calendar.setReadOnly(true);
-		calendarSource.getCalendars().addAll(calendar);
 		paneDetailTask.setVisible(false);
 		weekView.getCalendarSources().setAll(calendarSource);
 		
@@ -234,28 +329,36 @@ public class HomeForMemberController implements Initializable {
             handleEntrySelection(entry);
             return null; 
         });
+		if(LoginController.uslg.getPermission() <=2) {
+			btnEditTask.setDisable(false);
+		}else {
+			btnEditTask.setDisable(true);
+		}
 		
+		txtTitleTask.setEditable(false);
+		txtSubTitleTask.setEditable(false);
+		txtTaskFrom.setEditable(false);
+		txtTaskTo.setEditable(false);
+		pickDateStart.setEditable(false);
+		pickDateEnd.setEditable(false);
+		pickTimeStart.setDisable(true);
+		pickTimeEnd.setDisable(true);
+		txtContents.setEditable(false);
+		System.out.println(taskDoing.size());
 		
 	}
 	
 	private void handleEntrySelection(DateControl.EntryDetailsPopOverContentParameter entryDetails) {
 	    Entry<?> entry = entryDetails.getEntry();
-	    displayTaskDetail(entry);
-	}
-	
-	private <T> void displayTaskDetail(T entry) {
-		if(entry != null) {
-			paneDetailTask.setVisible(true);
-			btnApply.setDisable(true);
-		    paneMemberCalendar.setVisible(false);
-		    paneMemberBasic.setVisible(false);
-			System.out.println("Da goi entry");
+	    try {
+			displayTaskDetail(entry.getId());
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
 		}
 	}
 	
-	public HomeForMemberController(){
-	
-	}
+
 	private void SetConnection() {
 		cnn= DBConnect.makeConnection(LoginController.obSt.getValue("serverName"), 
 				LoginController.obSt.getValue("port"), LoginController.obSt.getValue("databaseName"),
@@ -366,6 +469,7 @@ public class HomeForMemberController implements Initializable {
 			gridPaneTaskDoing.getColumnConstraints().add(col);
 			gridDoingTime.getColumnConstraints().add(col);
 			loadTaskElement(taskDoing, gridPaneTaskDoing, i, 0);
+			System.out.println("Load task"+i);
 		}
 		gridPaneTaskDoing.setHgap(3);
 		gridPaneTaskDoing.setVgap(3);
@@ -431,7 +535,12 @@ public class HomeForMemberController implements Initializable {
 		            public void handle(MouseEvent event) {
 		                // Gọi phương thức khi click chuột vào 
 		            	if(event.getClickCount()==2) {
-		            		displayTaskDetail(task);
+		            		try {
+								displayTaskDetail(t.getId());
+							} catch (SQLException e) {
+								
+								e.printStackTrace();
+							}
 		            	}
 		            }
 		        });
@@ -440,10 +549,14 @@ public class HomeForMemberController implements Initializable {
 			}
 			TaskElementController eControl = loader.getController();
 			eControl.setTask(t);
+			LocalDate taskStart = t.getStart().toLocalDate();
+			LocalDate taskEnd = t.getFinish().toLocalDate();
 			if (pane instanceof GridPane) {
 				if (col == -1) {
 					// Nothing
-				} else if(t.getStart().isBefore(currentDateTime.plusDays(col)) && 						t.getFinish().isAfter(currentDateTime.plusDays(col))) {
+					System.out.println("Do nothing");
+				} else if((taskStart.isBefore(currentDate.plusDays(col))|| taskStart.isEqual(currentDate.plusDays(col)) )&& 						(taskEnd.isAfter(currentDate.plusDays(col))|| taskEnd.isEqual(currentDate.plusDays(col)))) {
+					System.out.println("Do something");
 					((GridPane) pane).add(item, col, row);
 					row++;
 				}
@@ -454,8 +567,6 @@ public class HomeForMemberController implements Initializable {
 	}
 	// Hàm gọi render cho mode Calendar
 	private void displayModeCalendar(int numberOfday) {
-
-		
 		
 		// Gán giá trị số ngày cần hiển thị
 		weekView.setNumberOfDays(numberOfday);
@@ -496,8 +607,8 @@ public class HomeForMemberController implements Initializable {
 			String Assigner = rs.getString("Assigner");
 			String UserObject = rs.getString("UserObject");
 			String Content = rs.getString("Content");
-			int Fullday = rs.getInt("Fullday");
-			String Calendar = rs.getString("Calendar");
+			//int Fullday = rs.getInt("Fullday");
+			//String Calendar = rs.getString("Calendar");
 			makeTask(ID,Title, Assegnee, TaskStatus,Report,StartDate, StartTime, EndDate, 
 					EndTime, Assigner, UserObject, Content);
 			makeEntry(ID,Title, Assegnee, TaskStatus,Report,StartDate, StartTime, EndDate, 
@@ -517,22 +628,25 @@ public class HomeForMemberController implements Initializable {
 		
 		LocalDateTime taskStartDateTime = LocalDateTime.of(StartDate, StartTime);
 		LocalDateTime taskEndDateTime = LocalDateTime.of(EndDate, EndTime);
-		System.out.println("End:"+taskEndDateTime.toString());
-		System.out.println("Current:"+currentDateTime.toString());
+
 	    task.setStart(taskStartDateTime);
 		task.setFinish(taskEndDateTime);		
 		
 		if(taskEndDateTime.isBefore(currentDateTime)) {
-			task.setStatus("Delay");	
+			task.setTaskstatus("Delay");	
 			taskFailed.add(task);
+			if(taskEndDateTime.toLocalDate().isEqual(currentDate)) {
+				taskDoing.add(task);
+			}
 		}else if(taskEndDateTime.isAfter(currentDateTime)) {
-			task.setStatus("Doing");
+			task.setTaskstatus("Doing");
 			taskDoing.add(task);	
 		}else if(taskStartDateTime.isAfter(currentDateTime)) {
-			task.setStatus("Plan");
+			task.setTaskstatus("Plan");
 			taskPlan.add(task);
 		}
 	}
+	// Ham Remake Entry
 	private void makeEntry(String ID, String Title, String Assegnee, String TaskStatus, String Report,
 			LocalDate StartDate, LocalTime StartTime, LocalDate EndDate, LocalTime EndTime, String Assigner, String 			UserObject, String Content) {
 		LocalDateTime taskStartDateTime = LocalDateTime.of(StartDate, StartTime);
@@ -542,8 +656,113 @@ public class HomeForMemberController implements Initializable {
 		entry.setUserObject("A");
 		entry.setLocation(Content);
 		entry.setInterval(taskStartDateTime,taskEndDateTime);
-		
-        calendar.addEntry(entry);
+		Calendar newCalendar = new Calendar(Title);
+		if(Integer.parseInt(ID)%4==0) {
+			newCalendar.setStyle(Style.STYLE1);
+		}else if(Integer.parseInt(ID)%3==0) {
+			newCalendar.setStyle(Style.STYLE2);
+		}else if(Integer.parseInt(ID)%5==0) {
+			newCalendar.setStyle(Style.STYLE3);
+		}else if(Integer.parseInt(ID)%7==0) {
+			newCalendar.setStyle(Style.STYLE4);
+		}else if(Integer.parseInt(ID)%2==0) {
+			newCalendar.setStyle(Style.STYLE5);
+		}else{
+			newCalendar.setStyle(Style.STYLE6);
+		}
+		newCalendar.setReadOnly(true);
+		calendarSource.getCalendars().addAll(newCalendar);
+		newCalendar.addEntry(entry);
 	}
+	
+	// Ham Nap Info cho DetailTask
+	
+	private void displayTaskDetail(String entry) throws SQLException {
+		if(entry != null) {
+			paneDetailTask.setVisible(true);
+			btnApply.setDisable(true);
+		    paneMemberCalendar.setVisible(false);
+		    paneMemberBasic.setVisible(false);
+		    
+		    Task task = loadTaskDetail(entry);
+		    txtTitleTask.setText(task.getTitle());
+		    txtSubTitleTask.setText("");
+		    txtTaskFrom.setText(task.getAssigner());
+		    txtTaskTo.setText(task.getAssegnee());
+		    pickDateStart.setValue(task.getStart().toLocalDate());
+		    pickDateEnd.setValue(task.getFinish().toLocalDate());
+		    pickTimeStart.setValue(task.getStart().toLocalTime());
+		    pickTimeEnd.setValue(task.getFinish().toLocalTime());
+		    txtContents.setText(task.getContent());
+		    btnAcceptTask.setSelected((task.getTaskstatus().equals("Accepted")?true:
+		    	((task.getTaskstatus().equals("Reported")?true:false))));
+		    if(btnAcceptTask.isSelected()) {
+		    	lbStatusAccepting.setText("You have accepted and agreed to perform the task!");
+		    }
+		    btnAcceptTask.setText(task.getId()+"#"+task.getAssegnee());
+			System.out.println("Da goi entry");
+		}
+	}
+	private Task loadTaskDetail(String id) throws SQLException {
+		SetConnection();
+		Task task = new Task();
+		String query = "select * from ExecuteTasks inner join Tasks"
+				+ " on ExecuteTasks.ID = tasks.ID  where Assegnee=? and Tasks.ID=?";
+		st = cnn.prepareStatement(query);
+		st.setString(1, LoginController.uslg.getUsername());
+		st.setString(2, id);
+		rs = st.executeQuery();
+		while(rs.next()) {
+			String ID = rs.getString("ID");
+			String Title = rs.getString("Title");
+			String Assegnee = rs.getString("Assegnee");
+			String TaskStatus = rs.getString("TaskStatus");
+			String Report = rs.getString("Report");
+			LocalDate StartDate = rs.getDate("StartDate").toLocalDate();
+			LocalTime StartTime = rs.getTime("StartTime").toLocalTime();
+			LocalDate EndDate = rs.getDate("EndDate").toLocalDate();
+			LocalTime EndTime = rs.getTime("EndTime").toLocalTime();
+			String Assigner = rs.getString("Assigner");
+			String UserObject = rs.getString("UserObject");
+			String Content = rs.getString("Content");
+			//int Fullday = rs.getInt("Fullday");
+			//String Calendar = rs.getString("Calendar");
+
+			task.setId(ID);
+			task.setTitle(Title);
+			task.setContent(Content);
+			task.setAssegnee(Assegnee);
+			task.setAssigner(Assigner);
+			task.setTaskstatus(TaskStatus);
+			LocalDateTime taskStartDateTime = LocalDateTime.of(StartDate, StartTime);
+			LocalDateTime taskEndDateTime = LocalDateTime.of(EndDate, EndTime);
+
+		    task.setStart(taskStartDateTime);
+			task.setFinish(taskEndDateTime);	
+		}
+		
+		cnn.close();
+		return task;
+	}
+	private void acceptingTaskAssignment() {
+		if(btnAcceptTask.isSelected()) {
+			SetConnection();
+			String[] tmp = btnAcceptTask.getText().split("#");
+			String query = "update ExecuteTasks set TaskStatus = 'Accepted' where ID = ? and Assegnee =?";
+			int count=0;
+			try {
+				st= cnn.prepareStatement(query);
+				st.setString(1, tmp[0]);
+				st.setString(2, tmp[1]);
+				count = st.executeUpdate();
+				if(count !=0) {
+					System.out.println("Check Susessfully");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 
 }
